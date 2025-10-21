@@ -51,4 +51,34 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     });
 
+    // START: SLICK SLIDER INITIALISATIE (voor automatische scroll en navigatiepijlen)
+    // Zorg ervoor dat jQuery geladen is in de index.html voor deze code wordt uitgevoerd!
+    if (typeof jQuery !== 'undefined') {
+        $('.portfolio-slider').slick({
+            infinite: true,
+            slidesToShow: 3, // Toont 3 items op desktop
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 3000, // Schuift elke 3 seconden
+            dots: true, // Paginatie stippen onderaan
+            arrows: true, // Navigatiepijlen
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1
+                    }
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+            ]
+        });
+    }
+    // EINDE: SLICK SLIDER INITIALISATIE
 });
