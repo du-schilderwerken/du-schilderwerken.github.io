@@ -12568,7 +12568,7 @@ h7, .h7 {
     /* ZICHTBAARHEID VAN SLICK NAVIGATIEPIJLEN */
     /* Maak de navigatiepijlen zichtbaar en verhoog de z-index */
     .slick-prev:before, .slick-next:before {
-        color: #343a40 !important; /* Maak pijlen donkerder en zichtbaar */
+        color: #343a40 !important; /* Maak pijlen donkerder en zichtbaar (afgestemd op Bootstrap's donkere tekst) */
         font-size: 30px; /* Maak ze wat groter */
     }
 
@@ -12586,4 +12586,11 @@ h7, .h7 {
 
     .slick-next {
         right: -25px; /* Schuif de rechterpijl naar rechts */
+    }
+
+    /* Zorg ervoor dat de slider container de pijlen kan bevatten buiten de marges op desktop */
+    @media (min-width: 992px) {
+        .portfolio-slider {
+            padding: 0 50px; /* Creëert ruimte links en rechts voor de pijlen */
+        }
     }
