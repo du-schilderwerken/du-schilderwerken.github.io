@@ -12595,40 +12595,38 @@ h7, .h7 {
         }
     }
     /*
- * === START AANGEPASTE MOBIELE RESPONSIVITEIT FIX ===
+ * === START MOBIELE RESPONSIVITEIT FIX VOOR CHAOS/OVERFLOW ===
  * Deze regels zorgen ervoor dat elementen niet uit de viewport lopen op kleine schermen.
  */
 
-    /* Voorkom horizontale overloop over de hele pagina */
+    /* Voorkom horizontale overloop over de hele pagina op mobiel */
     body, html {
         overflow-x: hidden !important;
     }
 
-    /* Targeting mobiele schermen (tot 575.98px breedte, oftewel de Bootstrap 'sm' breakpoint) */
-    @media (max-width: 575.98px) {
-
-        /*
-     * BELANGRIJKE OVERSCHRIJVING:
-     * Als u ergens in uw styles.css vaste 'width' of 'padding' heeft ingesteld voor elementen
-     * die full-width moeten zijn op mobiel, moet u die hier resetten.
-     * Bijvoorbeeld:
-     * .uw-custom-sectie-of-div {
-     * width: 100% !important;
-     * padding: 0 15px !important;
-     * }
-     */
-
-        /* Zorg ervoor dat alle afbeeldingen in de lay-out schalen, tenzij ze al de img-fluid klasse hebben */
-        img {
-            max-width: 100% !important;
-            height: auto !important;
-        }
-
-        /* Indien nodig, pas de marges van rijen aan om horizontale scrollbalken te elimineren */
-        .row {
-            margin-left: 0;
-            margin-right: 0;
-        }
+    /* Zorg ervoor dat alle afbeeldingen en media schalen ten opzichte van hun container */
+    img, video {
+        max-width: 100% !important;
+        height: auto !important;
     }
 
-    /* === EINDE AANGEPASTE MOBIELE RESPONSIVITEIT FIX === */
+    /* Voor het geval er fixed width containers zijn die de layout breken */
+    .container, .container-fluid {
+        overflow-x: hidden;
+    }
+
+    /* Fix voor de achtergrondvideo die soms op mobiel niet goed schaalt of gepositioneerd is */
+    .bg-video {
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        z-index: -100;
+        /* Extra maatregelen om te centreren en te schalen */
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        object-fit: cover;
+    }
+
+    /* === EINDE MOBIELE RESPONSIVITEIT FIX === */
