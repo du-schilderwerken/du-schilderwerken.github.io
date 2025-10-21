@@ -51,34 +51,4 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     });
 
-    // START: SLICK SLIDER INITIALISATIE (met Autoplay)
-    if (typeof jQuery !== 'undefined') {
-        $('.portfolio-slider').slick({
-            dots: true,
-            arrows: true,
-            infinite: true,
-            speed: 300,
-            autoplay: true,          // Zorgt voor automatisch verschuiven
-            autoplaySpeed: 3000,     // Schuift na 3000 milliseconden (3 seconden)
-            slidesToShow: 3,
-            slidesToScroll: 1,
-            responsive: [
-                {
-                    breakpoint: 992,
-                    settings: {
-                        slidesToShow: 2,
-                        slidesToScroll: 1
-                    }
-                },
-                {
-                    breakpoint: 576,
-                    settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1
-                    }
-                }
-            ]
-        });
-    }
-    // EINDE: SLICK SLIDER INITIALISATIE
 });
