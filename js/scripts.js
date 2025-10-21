@@ -61,7 +61,7 @@ window.addEventListener('DOMContentLoaded', event => {
             autoplay: true,
             autoplaySpeed: 3000, // Schuift elke 3 seconden
             dots: true, // Paginatie stippen onderaan
-            arrows: true, // Navigatiepijlen
+            arrows: true, // Cruciaal voor navigatiepijlen
             responsive: [
                 {
                     breakpoint: 1024,

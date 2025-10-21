@@ -12555,3 +12555,35 @@ h7, .h7 {
         /* Extra aanpassingen voor betere plaatsing */
         top: 40%;
     }
+    /* ------------------------------------------- */
+    /* CSS voor de Slick Slider Fixes (Pijlen & Tekst Wrap) */
+    /* ------------------------------------------- */
+
+    /* FIX VOOR TEKST OVERLAPPING: Zorgt ervoor dat de tekst in de beschrijving mag terugspringen */
+    .portfolio-caption {
+        white-space: normal !important;
+        padding: 15px;
+    }
+
+    /* ZICHTBAARHEID VAN SLICK NAVIGATIEPIJLEN */
+    /* Maak de navigatiepijlen zichtbaar en verhoog de z-index */
+    .slick-prev:before, .slick-next:before {
+        color: #343a40 !important; /* Maak pijlen donkerder en zichtbaar */
+        font-size: 30px; /* Maak ze wat groter */
+    }
+
+    /* Zorg dat de pijlen boven de content staan en verticaal gecentreerd zijn */
+    .slick-prev, .slick-next {
+        z-index: 10;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    /* Positionering van de pijlen aan de uiterste randen van de slider container */
+    .slick-prev {
+        left: -25px; /* Schuif de linkerpijl naar links */
+    }
+
+    .slick-next {
+        right: -25px; /* Schuif de rechterpijl naar rechts */
+    }
