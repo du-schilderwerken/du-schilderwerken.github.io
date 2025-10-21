@@ -12594,3 +12594,41 @@ h7, .h7 {
             padding: 0 50px; /* Creëert ruimte links en rechts voor de pijlen */
         }
     }
+    /*
+ * === START AANGEPASTE MOBIELE RESPONSIVITEIT FIX ===
+ * Deze regels zorgen ervoor dat elementen niet uit de viewport lopen op kleine schermen.
+ */
+
+    /* Voorkom horizontale overloop over de hele pagina */
+    body, html {
+        overflow-x: hidden !important;
+    }
+
+    /* Targeting mobiele schermen (tot 575.98px breedte, oftewel de Bootstrap 'sm' breakpoint) */
+    @media (max-width: 575.98px) {
+
+        /*
+     * BELANGRIJKE OVERSCHRIJVING:
+     * Als u ergens in uw styles.css vaste 'width' of 'padding' heeft ingesteld voor elementen
+     * die full-width moeten zijn op mobiel, moet u die hier resetten.
+     * Bijvoorbeeld:
+     * .uw-custom-sectie-of-div {
+     * width: 100% !important;
+     * padding: 0 15px !important;
+     * }
+     */
+
+        /* Zorg ervoor dat alle afbeeldingen in de lay-out schalen, tenzij ze al de img-fluid klasse hebben */
+        img {
+            max-width: 100% !important;
+            height: auto !important;
+        }
+
+        /* Indien nodig, pas de marges van rijen aan om horizontale scrollbalken te elimineren */
+        .row {
+            margin-left: 0;
+            margin-right: 0;
+        }
+    }
+
+    /* === EINDE AANGEPASTE MOBIELE RESPONSIVITEIT FIX === */
