@@ -64,7 +64,7 @@ window.addEventListener('DOMContentLoaded', event => {
 
         const startAutoScroll = () => {
             // Voorkom dat er meerdere intervallen tegelijk lopen
-            stopAutoScroll();
+            stopAutoScroll(); 
 
             scrollInterval = setInterval(() => {
                 // Scroll de container
