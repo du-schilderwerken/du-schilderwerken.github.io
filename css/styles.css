@@ -12678,3 +12678,33 @@ h7, .h7 {
             margin-left: 0.5rem;
         }
     }
+    /* Make call button float and remain visible while scrolling (mobile + desktop) */
+    .btn-call {
+        position: fixed;
+        top: 0.85rem; /* distance from top (adjust if overlapping other fixed UI) */
+        right: 1rem; /* distance from right edge */
+        z-index: 1095; /* above navbar (navbar fixed-top z-index:1030) */
+        box-shadow: 0 8px 24px rgba(33,37,41,0.16);
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Slightly increase tap target on touch devices */
+    @media (max-width: 576px) {
+        .btn-call {
+            top: 0.5rem;
+            right: 0.5rem;
+            padding: 0.45rem 0.6rem; /* keep icon comfortably tappable */
+            border-radius: 50%; /* circular on very small screens (icon-only) */
+        }
+
+            .btn-call .call-text {
+                display: none;
+            }
+        /* icon-only on phones */
+    }
+
+    /* Prevent the fixed button from shifting page layout when present */
+    body {
+        /* no layout changes required; if you want extra top spacing under navbar when present,
+     use html { scroll-padding-top: <navbar-height>; } already set earlier in file. */
+    }
