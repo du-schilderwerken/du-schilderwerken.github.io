@@ -136,6 +136,7 @@ img[width][height], img[style] {
 .portfolio-scroll:focus {
     outline: none;
 }
+
 /* Mobile: make contact text readable by using a darker color */
 @media (max-width: 767.98px) {
   /* Strong override for any element in #contact that has an inline color */
@@ -205,5 +206,49 @@ img[width][height], img[style] {
   #contact .fab::before {
     color: inherit !important;
     fill: currentColor !important;
+  }
+}
+
+/* Fix contact text readability without breaking Font Awesome stacks */
+@media (max-width: 767.98px) {
+  /* 1) Target only textual elements — don't override icons */
+  #contact h2.section-heading,
+  #contact .text-center p,
+  #contact p,
+  #contact .col-md-4 p,
+  #contact .portfolio-caption-subheading,
+  #contact .portfolio-caption-heading {
+    color: #1f1f1f !important;
+  }
+
+  /* 2) If an element has an inline color, make it readable but don't force all children */
+  #contact [style*="color"] {
+    color: #1f1f1f !important;
+  }
+
+  /* 3) Allow Font Awesome classes to control icon color.
+     Reset any broad color overrides for FA elements so stacked icons render correctly. */
+  #contact .fa,
+  #contact .fas,
+  #contact .far,
+  #contact .fab,
+  #contact .fa-stack,
+  #contact .fa-stack * {
+    color: initial !important;
+    fill: initial !important;
+  }
+
+  /* 4) Ensure SVGs inserted by the FA JS use currentColor for their paths (solid icons inherit color) */
+  #contact .svg-inline--fa path,
+  #contact .svg-inline--fa circle,
+  #contact .svg-inline--fa rect,
+  #contact .svg-inline--fa polygon,
+  #contact .svg-inline--fa line {
+    fill: currentColor !important;
+  }
+
+  /* 5) Keep links readable */
+  #contact a {
+    color: #1f1f1f !important;
   }
 }
