@@ -12617,12 +12617,20 @@ h7, .h7 {
             right: 6px;
         }
     }
-    /* Footer BTW styling — append near the existing .footer rule (or at end of file) */
+    /* Footer — make BTW number more visible on dark background */
     .footer .btw {
-        color: #6c757d; /* matches Bootstrap .text-muted */
-        font-size: 0.9rem; /* same scale as footer */
-        font-family: inherit; /* use footer's Montserrat */
-        font-weight: 400;
-        margin-top: 0.25rem;
+        color: rgba(255, 255, 255, 0.88); /* near-white for good contrast */
+        font-size: 0.95rem; /* slightly larger than .small */
+        font-weight: 600; /* a bit bolder for readability */
+        font-family: inherit;
         letter-spacing: 0.01em;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.6); /* subtle lift from background */
+        margin-top: 0.125rem;
+    }
+
+    @media (max-width: 576px) {
+        .footer .btw {
+            font-size: 0.9rem;
+        }
+        /* keep it readable on small screens */
     }
