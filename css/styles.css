@@ -12617,3 +12617,112 @@ h7, .h7 {
             right: 6px;
         }
     }
+    /* Mobile image fixes and responsive adjustments (append to end of file) */
+
+    /* Safety: make every image responsive */
+    img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    /* Portfolio: keep horizontal scroller on phones and limit slide size */
+    #portfolio .portfolio-wrapper {
+        /* ensure positioned (should already be set by JS fallback) */
+        position: relative;
+    }
+
+    #portfolio .portfolio-scroll {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        gap: 1rem;
+        padding: 0.75rem 0;
+        align-items: flex-start;
+    }
+
+    /* Make slides narrower on small screens so they don't appear huge or stack vertically */
+    #portfolio .portfolio-slide {
+        flex: 0 0 85%;
+        min-width: 200px;
+        max-width: 90vw;
+        box-sizing: border-box;
+    }
+
+    /* Slightly smaller slides on very small phones */
+    @media (max-width: 420px) {
+        #portfolio .portfolio-slide {
+            flex: 0 0 88%;
+            min-width: 180px;
+        }
+        /* hide large arrow controls to preserve screen space */
+        .portfolio-nav {
+            display: none;
+        }
+    }
+
+    /* Ensure images inside slides fully cover container area without distortion */
+    #portfolio .portfolio-slide img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        display: block;
+    }
+
+    /* Timeline / About circular images: keep them small and cropped */
+    .timeline .timeline-image {
+        width: 72px;
+        height: 72px;
+        overflow: hidden;
+        border-radius: 50%;
+        border-width: 6px;
+        border-style: solid;
+        box-sizing: border-box;
+    }
+
+        .timeline .timeline-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+    /* Reduce timeline circles on very small screens */
+    @media (max-width: 575.98px) {
+        .timeline .timeline-image {
+            width: 56px;
+            height: 56px;
+            border-width: 4px;
+        }
+    }
+
+    /* Team member / other round photos */
+    .team-member img {
+        width: 10rem;
+        height: auto;
+        max-width: 100%;
+        object-fit: cover;
+    }
+
+    /* Make team image smaller on phones */
+    @media (max-width: 575.98px) {
+        .team-member img {
+            width: 8rem;
+            height: 8rem;
+        }
+    }
+
+    /* If any component forces big inline width, make sure img-fluid still applies */
+    .img-fluid {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Optional: reduce masthead padding on small screens so images below are visible sooner */
+    @media (max-width: 575.98px) {
+        header.masthead {
+            padding-top: 6rem;
+            padding-bottom: 3rem;
+        }
+    }
