@@ -316,3 +316,51 @@ img[width][height], img[style] {
     fill: #fff !important;
   }
 }
+
+/* Mobile contact: targeted text + explicit stacked icon coloring (append) */
+@media (max-width: 767.98px) {
+  /* Target only text elements — avoid touching icons */
+  #contact h2.section-heading,
+  #contact .text-center p,
+  #contact p,
+  #contact .col-md-4 p {
+    color: #1f1f1f !important;
+  }
+
+  /* Defensive: if some elements have inline color, make them readable but don't override icons */
+  #contact [style*="color"] {
+    color: #1f1f1f !important;
+  }
+
+  /* --- Font Awesome stacked icons: keep circle yellow and glyph white --- */
+  /* For classic font-based stacks */
+  #contact .fa-stack .fa-stack-2x { color: #ffc800 !important; }
+  #contact .fa-stack .fa-stack-1x,
+  #contact .fa-inverse { color: #fff !important; }
+
+  /* For inline-SVG FA (injected by JS): make SVG shapes inherit currentColor */
+  #contact svg.svg-inline--fa { color: inherit !important; }
+  #contact svg.svg-inline--fa path,
+  #contact svg.svg-inline--fa circle,
+  #contact svg.svg-inline--fa rect,
+  #contact svg.svg-inline--fa polygon,
+  #contact svg.svg-inline--fa line {
+    fill: currentColor !important;
+  }
+
+  /* Ensure stacked SVG circle uses the yellow when present */
+  #contact svg.svg-inline--fa[data-icon="circle"],
+  #contact svg.svg-inline--fa.fa-circle {
+    color: #ffc800 !important;
+    fill: #ffc800 !important;
+  }
+
+  /* Re-apply white for the inner glyph SVGs (non-circle children) */
+  #contact svg.svg-inline--fa:not([data-icon="circle"]) {
+    color: #fff !important;
+    fill: #fff !important;
+  }
+
+  /* Keep links readable */
+  #contact a { color: #1f1f1f !important; }
+}
