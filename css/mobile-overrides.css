@@ -171,3 +171,39 @@ img[width][height], img[style] {
   }
   */
 }
+
+/* Ensure Font Awesome icons render correctly in #contact on small screens */
+@media (max-width: 767.98px) {
+  /* SVG-inlined FA icons and classic <i> variants */
+  #contact .svg-inline--fa,
+  #contact .fa,
+  #contact .fas,
+  #contact .far,
+  #contact .fab,
+  #contact i {
+    color: #1f1f1f !important;       /* readable color */
+    fill: currentColor !important;   /* make SVG use the same color */
+    font-family: "Font Awesome 5 Free", "Font Awesome 5 Brands", "Font Awesome 5 Pro", sans-serif !important;
+    font-weight: 900 !important;     /* required for solid icons (fas) */
+    speak: none;
+    line-height: 1;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  /* fa-stack (stacked icons) specifics */
+  #contact .fa-stack,
+  #contact .fa-stack * {
+    color: #1f1f1f !important;
+    fill: currentColor !important;
+  }
+
+  /* Defensive: ensure pseudo-elements also inherit color/fill */
+  #contact .fa::before,
+  #contact .fas::before,
+  #contact .far::before,
+  #contact .fab::before {
+    color: inherit !important;
+    fill: currentColor !important;
+  }
+}
