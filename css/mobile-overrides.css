@@ -138,23 +138,36 @@ img[width][height], img[style] {
 }
 /* Mobile: make contact text readable by using a darker color */
 @media (max-width: 767.98px) {
-    /* target all text inside the contact section and force readable color */
-    #contact,
-    #contact * {
-        color: inherit !important;
-    }
+  /* Strong override for any element in #contact that has an inline color */
+  #contact [style*="color"] {
+    color: #1f1f1f !important;
+  }
 
-        /* explicit readable color for paragraphs/headings inside contact */
-        #contact h2.section-heading,
-        #contact .text-center p,
-        #contact p,
-        #contact .portfolio-caption-subheading,
-        #contact .portfolio-caption-heading {
-            color: #1f1f1f !important; /* dark gray — readable on white */
-        }
+  /* Generic fallback: force readable color for all contact content */
+  #contact,
+  #contact * {
+    color: #1f1f1f !important;
+  }
 
-        /* keep the icon stack colored correctly (FontAwesome inside .fa-stack) */
-        #contact .fa-stack, #contact .fa-stack * {
-            color: inherit;
-        }
+  /* Keep links and brand/icon accents readable (adjust as needed) */
+  #contact a,
+  #contact .fa-stack,
+  #contact .fa-stack * {
+    color: #1f1f1f !important;
+  }
+
+  /* If you prefer to keep the pink but restore contrast, uncomment the block below
+     instead of the dark-text rules above. It sets a dark background and white text. */
+  /*
+  #contact {
+    background-color: #212529 !important;
+    color: #ffffff !important;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+  #contact h2.section-heading,
+  #contact p {
+    color: #ffffff !important;
+  }
+  */
 }
