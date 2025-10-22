@@ -57,6 +57,14 @@ window.addEventListener('DOMContentLoaded', event => {
         const scroller = document.querySelector('.portfolio-scroll');
         if (!scroller) return;
 
+        // defensive runtime styles in case other CSS overrides them
+        scroller.style.display = scroller.style.display || 'flex';
+        scroller.style.flexWrap = scroller.style.flexWrap || 'nowrap';
+        scroller.style.overflowX = scroller.style.overflowX || 'auto';
+        scroller.style.webkitOverflowScrolling = scroller.style.webkitOverflowScrolling || 'touch';
+        scroller.style.scrollSnapType = scroller.style.scrollSnapType || 'x mandatory';
+        scroller.style.gap = scroller.style.gap || '1rem';
+
         // Make sure the scroller is positioned to contain absolute controls
         if (getComputedStyle(scroller).position === 'static') {
             scroller.style.position = 'relative';
