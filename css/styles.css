@@ -12634,3 +12634,47 @@ h7, .h7 {
         }
         /* keep it readable on small screens */
     }
+    /* Persistent call button in navbar */
+    .btn-call {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: var(--bs-primary); /* site yellow */
+        color: #212529; /* dark text for contrast */
+        font-weight: 700;
+        padding: 0.35rem 0.9rem;
+        border-radius: 999px;
+        box-shadow: 0 6px 18px rgba(33,37,41,0.12);
+        text-decoration: none;
+        margin-left: 0.75rem;
+        transition: transform 0.12s ease, background-color 0.12s ease;
+        border: 0;
+        line-height: 1;
+        white-space: nowrap;
+    }
+
+        .btn-call i.fas.fa-phone {
+            font-size: 1rem;
+            color: #212529;
+        }
+
+        /* hover / focus */
+        .btn-call:hover,
+        .btn-call:focus {
+            background: #d9aa00; /* slightly darker yellow */
+            transform: translateY(-1px);
+            text-decoration: none;
+            color: #212529;
+        }
+
+    /* small screens: hide the number text and keep icon only */
+    @media (max-width: 576px) {
+        .btn-call .call-text {
+            display: none;
+        }
+
+        .btn-call {
+            padding: 0.35rem 0.5rem;
+            margin-left: 0.5rem;
+        }
+    }
