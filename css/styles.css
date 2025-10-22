@@ -3218,83 +3218,71 @@ footer {
 }
 
 /* ================================================================= */
-/* CUSTOM MOBILE OPTIMIZATION STYLES (Responsive Fixes)              */
-/* Deze stijlen worden ALLEEN toegepast op schermen met een breedte  */
-/* van maximaal 767px (mobiele telefoons en kleine tablets)          */
+/* GEFIXTE RESPONSIVE STIJLEN (max-width: 767px)                     */
+/* Deze stijlen worden ALLEEN toegepast op schermen tot 767px breedte. */
 /* ================================================================= */
 @media (max-width: 767px) {
-    /* Ensure content sections use 100% of the viewport width */
-    .container,
-    .container-fluid {
-        /* Overrides potential custom fixed width styles that break responsiveness */
-        max-width: 100% !important;
-        padding-left: 15px !important;
-        padding-right: 15px !important;
-    }
-
-    /* Adjust padding for main content sections to prevent excessive empty space */
-    section {
-        padding: 4rem 0 !important; /* Smaller vertical padding for better flow on small screens */
-    }
-
-    /* Adjust the main header (masthead) for smaller screens */
+    /* Kleinere padding voor de header (Desktop blijft 17rem/12.5rem) */
     header.masthead {
-        padding-top: 8rem !important;
-        padding-bottom: 4rem !important;
-        /* Ensure the background image covers the area properly on mobile */
-        background-attachment: scroll !important;
+        padding-top: 8rem;
+        padding-bottom: 4rem;
     }
 
-        /* Decrease font size of the main headings if they are too large on mobile */
+        /* Kleinere lettergrootte voor de hoofdtitels op mobiel */
         header.masthead .masthead-subheading {
-            font-size: 1.25rem !important;
-            margin-bottom: 1rem !important;
+            font-size: 1.25rem;
         }
 
         header.masthead .masthead-heading {
-            font-size: 2.25rem !important;
-            line-height: 1.2 !important;
-            margin-bottom: 1.5rem !important;
+            font-size: 2.5rem;
         }
 
-    /* Ensure all images are fluid and fit within their container */
-    img {
-        max-width: 100% !important;
-        height: auto !important;
+    /* Zorg ervoor dat alle secties compact zijn op mobiel */
+    section {
+        padding: 4rem 0;
     }
 
-    /* Adjust the timeline view for a single-column display on mobile */
-    .timeline {
-        /* Verwijder de verticale lijn voor mobiel om ruimte te besparen */
-        padding-left: 0 !important;
+    /* Fix voor Iconen/Cirkels in de Service sectie */
+    /* De iconen (fa-stack) hebben een vaste grootte en zijn de oorzaak van het overlappen. 
+       We zorgen er niet voor dat de iconen groter worden getoond dan hun container. */
+    .fa-stack {
+        /* Gebruik een kleinere vaste grootte voor mobiel als het overlapt */
+        width: 1.5em;
+        height: 1.5em;
+        line-height: 1.5em;
     }
 
-        .timeline:before {
+    .fa-stack-1x {
+        /* Vergroot de binnenste iconen om de stapel te vullen */
+        font-size: 0.9em;
+    }
+
+    .fa-stack-2x {
+        /* De basis (cirkel) verkleinen */
+        font-size: 1.5em;
+    }
+
+    /* Oplossen van de timeline (Portfolio) issues: */
+    /* Verberg de verticale lijn op mobiel */
+    .timeline:before {
+        display: none;
+    }
+    /* Zorg dat de elementen de volle breedte innemen en netjes onder elkaar komen */
+    .timeline > li,
+    .timeline > li.timeline-inverted {
+        margin-bottom: 30px;
+        min-height: auto; /* Belangrijk om de hoogte te herstellen */
+    }
+
+        .timeline > li .timeline-panel,
+        .timeline > li.timeline-inverted > .timeline-panel {
+            width: 100%;
+            float: none;
+            padding: 0; /* Verwijder de grote padding die zorgt voor verschuiving */
+            text-align: center; /* Zorg dat tekst gecentreerd wordt of links uitgelijnd */
+        }
+        /* Verberg de grote cirkels (images) in de timeline op mobiel */
+        .timeline > li .timeline-image {
             display: none;
-        }
-
-        .timeline > li {
-            margin-bottom: 30px;
-        }
-
-            .timeline > li .timeline-panel,
-            .timeline > li.timeline-inverted > .timeline-panel {
-                width: 100%;
-                float: none;
-                padding: 0 0 0 0;
-                text-align: left;
-            }
-            /* Hide the circular image in the timeline on mobile as it's typically too large/misplaced */
-            .timeline > li .timeline-image {
-                display: none;
-            }
-
-    /* Force portfolio items to take full width if they were displayed side-by-side */
-    .portfolio-item {
-        max-width: 100% !important;
-    }
-
-        .portfolio-item:not(:last-child) {
-            margin-bottom: 3rem;
         }
 }
