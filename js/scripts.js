@@ -57,30 +57,14 @@ window.addEventListener('DOMContentLoaded', event => {
         const scroller = document.querySelector('.portfolio-scroll');
         if (!scroller) return;
 
-        // Make sure the scroller is positioned to contain absolute controls
-        if (getComputedStyle(scroller).position === 'static') {
-            scroller.style.position = 'relative';
+        // Determine wrapper to host controls (must be outside the scrollable content)
+        const wrapper = scroller.closest('.portfolio-wrapper') || scroller.parentElement;
+        // Ensure wrapper is positioned
+        if (getComputedStyle(wrapper).position === 'static') {
+            wrapper.style.position = 'relative';
         }
 
         // Create nav buttons
-        const btnBaseStyle = {
-            position: 'absolute',
-            top: '50%',
-            transform: 'translateY(-50%)',
-            zIndex: 20,
-            width: '44px',
-            height: '44px',
-            borderRadius: '50%',
-            border: 'none',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            cursor: 'pointer',
-            background: 'rgba(0,0,0,0.45)',
-            color: '#fff',
-            boxShadow: '0 4px 12px rgba(0,0,0,0.25)'
-        };
-
         const prev = document.createElement('button');
         prev.setAttribute('type', 'button');
         prev.setAttribute('aria-label', 'Vorige');
@@ -93,17 +77,9 @@ window.addEventListener('DOMContentLoaded', event => {
         next.className = 'portfolio-nav portfolio-next';
         next.innerHTML = '<i class="fas fa-chevron-right" aria-hidden="true"></i>';
 
-        // Apply inline styles
-        Object.assign(prev.style, btnBaseStyle, { left: '8px' });
-        Object.assign(next.style, btnBaseStyle, { right: '8px' });
-
-        // Ensure buttons are keyboard-focusable
-        prev.tabIndex = 0;
-        next.tabIndex = 0;
-
-        // Insert buttons inside scroller so absolute positioning is relative to scroller
-        scroller.appendChild(prev);
-        scroller.appendChild(next);
+        // Insert buttons into wrapper (so they don't scroll with the inner content)
+        wrapper.appendChild(prev);
+        wrapper.appendChild(next);
 
         const firstSlide = scroller.querySelector('.portfolio-slide');
         const computed = getComputedStyle(scroller);
@@ -119,7 +95,6 @@ window.addEventListener('DOMContentLoaded', event => {
 
         let autoInterval = null;
         const AUTO_DELAY = 3000;
-        let autoRunning = true;
         let lastAction = 0;
         const ACTION_DEBOUNCE = 300; // ms
 
@@ -129,7 +104,6 @@ window.addEventListener('DOMContentLoaded', event => {
             lastAction = now;
 
             const amount = getScrollAmount();
-            const maxScroll = scroller.scrollWidth - scroller.clientWidth;
             // If already near end, wrap to start
             if (scroller.scrollLeft + scroller.clientWidth >= scroller.scrollWidth - 5) {
                 scroller.scrollTo({ left: 0, behavior: 'smooth' });
@@ -181,7 +155,6 @@ window.addEventListener('DOMContentLoaded', event => {
             autoInterval = setInterval(() => {
                 scrollNext();
             }, AUTO_DELAY);
-            autoRunning = true;
         }
 
         function stopAuto() {
@@ -189,7 +162,6 @@ window.addEventListener('DOMContentLoaded', event => {
                 clearInterval(autoInterval);
                 autoInterval = null;
             }
-            autoRunning = false;
         }
 
         function pauseAuto() {
@@ -218,9 +190,6 @@ window.addEventListener('DOMContentLoaded', event => {
         // Start auto-scroll
         startAuto();
 
-        // Make buttons visible only when JavaScript is enabled — you may style via CSS later
-        prev.style.opacity = '1';
-        next.style.opacity = '1';
     })();
 
 });

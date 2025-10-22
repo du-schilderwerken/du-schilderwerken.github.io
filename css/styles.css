@@ -12560,3 +12560,60 @@ h7, .h7 {
         background: rgba(33,37,41,0.12);
         border-radius: 10px;
     }
+    /* Portfolio wrapper + fixed arrow controls (append near end of file) */
+
+    .portfolio-wrapper {
+        position: relative; /* positioning context for controls (outside scrollable content) */
+    }
+
+    /* Arrows placed inside the wrapper so they do NOT scroll with .portfolio-scroll */
+    .portfolio-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 30;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        border: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        background: rgba(0, 0, 0, 0.45);
+        color: #fff;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+        transition: background 0.15s ease, opacity 0.15s ease;
+        opacity: 0.95;
+    }
+
+        .portfolio-nav:hover {
+            background: rgba(0,0,0,0.6);
+        }
+
+    /* left / right positions */
+    .portfolio-prev {
+        left: 8px;
+    }
+
+    .portfolio-next {
+        right: 8px;
+    }
+
+    /* smaller touch targets on very small viewports */
+    @media (max-width: 575.98px) {
+        .portfolio-nav {
+            width: 36px;
+            height: 36px;
+            left: 6px;
+            right: 6px;
+        }
+
+        .portfolio-prev {
+            left: 6px;
+        }
+
+        .portfolio-next {
+            right: 6px;
+        }
+    }
