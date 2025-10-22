@@ -252,3 +252,67 @@ img[width][height], img[style] {
     color: #1f1f1f !important;
   }
 }
+
+/* Restore Font Awesome stacked icon colors for #contact on mobile */
+@media (max-width: 767.98px) {
+  /* Outer circle (fa-circle / stack 2x) -> brand yellow */
+  #contact .fa-circle,
+  #contact .fa-stack-2x,
+  #contact svg.svg-inline--fa.fa-circle,
+  #contact svg[data-icon="circle"] {
+    color: #ffc800 !important;
+    fill: #ffc800 !important;
+  }
+
+  /* Inner glyph (fa-inverse / stack 1x) -> white */
+  #contact .fa-inverse,
+  #contact .fa-stack-1x,
+  #contact svg.svg-inline--fa.fa-inverse,
+  /* fallback selector for other SVG icons inside the stack */
+  #contact .fa-stack svg:not(.fa-circle),
+  #contact svg.svg-inline--fa:not(.fa-circle) {
+    color: #fff !important;
+    fill: #fff !important;
+  }
+
+  /* Ensure SVG path elements use currentColor */
+  #contact svg.svg-inline--fa path,
+  #contact svg.svg-inline--fa circle,
+  #contact svg.svg-inline--fa rect,
+  #contact svg.svg-inline--fa polygon,
+  #contact svg.svg-inline--fa line {
+    fill: currentColor !important;
+  }
+
+  /* Preserve Font Awesome font fallback if JS/CSS rendering differs */
+  #contact .fa,
+  #contact .fas,
+  #contact .far,
+  #contact .fab {
+    color: inherit !important;
+    font-family: "Font Awesome 5 Free", "Font Awesome 5 Brands", sans-serif !important;
+    font-weight: 900 !important;
+  }
+
+  /* Undo any earlier blanket resets that could hide icons */
+  #contact .fa,
+  #contact .fa-stack,
+  #contact .fa-stack * {
+    color: unset !important;
+    fill: unset !important;
+  }
+
+  /* Re-apply correct colours after unsetting */
+  #contact .fa-circle,
+  #contact .fa-stack-2x,
+  #contact svg.svg-inline--fa.fa-circle {
+    color: #ffc800 !important;
+    fill: #ffc800 !important;
+  }
+  #contact .fa-inverse,
+  #contact .fa-stack-1x,
+  #contact svg.svg-inline--fa:not(.fa-circle) {
+    color: #fff !important;
+    fill: #fff !important;
+  }
+}
