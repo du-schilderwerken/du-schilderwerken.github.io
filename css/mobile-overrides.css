@@ -1,0 +1,138 @@
+/* Mobile overrides — loaded after styles.css */
+
+/* 1) Global safety for images */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover; /* helps crop circular images nicely when width/height are set */
+}
+
+/* 2) Constrain background video on small screens (avoid huge height) */
+@media (max-width: 767.98px) {
+    .bg-video {
+        max-height: 40vh;
+        width: 100%;
+        object-fit: cover;
+    }
+}
+
+/* 3) Portfolio: keep horizontal scroller on small screens and make slides smaller */
+@media (max-width: 767.98px) {
+    /* If you use the wrapper & scroller markup, ensure it stays horizontal */
+    .portfolio-wrapper {
+        position: relative;
+    }
+
+    .portfolio-scroll {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch;
+        gap: 0.75rem;
+        padding: 0.6rem 0;
+        scroll-snap-type: x mandatory;
+        align-items: flex-start;
+    }
+
+    .portfolio-slide,
+    #portfolio .portfolio-item,
+    .portfolio-item img {
+        box-sizing: border-box;
+    }
+
+    .portfolio-slide,
+    #portfolio .portfolio-item {
+        flex: 0 0 85%;
+        min-width: 180px;
+        max-width: 90vw;
+        margin: 0;
+        scroll-snap-align: center;
+    }
+
+        .portfolio-slide img,
+        #portfolio .portfolio-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+    /* hide large decorative arrows on very small phones to save space */
+    .portfolio-nav {
+        display: none !important;
+    }
+}
+
+/* 4) Timeline / About circular images: ensure they remain small and cropped */
+.timeline .timeline-image {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    overflow: hidden;
+    border-width: 6px;
+    border-style: solid;
+    box-sizing: border-box;
+}
+
+    .timeline .timeline-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+/* Slightly increase on narrow tablets */
+@media (min-width: 576px) and (max-width: 991.98px) {
+    .timeline .timeline-image {
+        width: 80px;
+        height: 80px;
+        border-width: 7px;
+    }
+}
+
+/* 5) Team / other portrait images */
+.team-member img {
+    width: 10rem; /* desktop fallback kept */
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* reduce on small screens */
+@media (max-width: 767.98px) {
+    .team-member img {
+        width: 8rem;
+        height: 8rem;
+    }
+}
+
+/* 6) Masthead spacing — reduce huge paddings on phones so content is visible sooner */
+@media (max-width: 767.98px) {
+    header.masthead {
+        padding-top: 6.5rem !important;
+        padding-bottom: 3rem !important;
+        background-attachment: scroll !important;
+        background-size: cover !important;
+    }
+
+        header.masthead .masthead-heading {
+            font-size: 1.8rem !important;
+            line-height: 1.9rem !important;
+        }
+
+        header.masthead .masthead-subheading {
+            font-size: 1rem !important;
+        }
+}
+
+/* 7) Defensive: in case any component forces images to a specific large height */
+img[width][height], img[style] {
+    max-width: 100%;
+    height: auto !important;
+    width: auto;
+}
+
+/* 8) Accessibility: ensure portfolio scroller is focusable on mobile */
+.portfolio-scroll:focus {
+    outline: none;
+}
