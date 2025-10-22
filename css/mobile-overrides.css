@@ -136,3 +136,25 @@ img[width][height], img[style] {
 .portfolio-scroll:focus {
     outline: none;
 }
+/* Mobile: make contact text readable by using a darker color */
+@media (max-width: 767.98px) {
+    /* target all text inside the contact section and force readable color */
+    #contact,
+    #contact * {
+        color: inherit !important;
+    }
+
+        /* explicit readable color for paragraphs/headings inside contact */
+        #contact h2.section-heading,
+        #contact .text-center p,
+        #contact p,
+        #contact .portfolio-caption-subheading,
+        #contact .portfolio-caption-heading {
+            color: #1f1f1f !important; /* dark gray — readable on white */
+        }
+
+        /* keep the icon stack colored correctly (FontAwesome inside .fa-stack) */
+        #contact .fa-stack, #contact .fa-stack * {
+            color: inherit;
+        }
+}
