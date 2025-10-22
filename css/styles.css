@@ -12617,3 +12617,12 @@ h7, .h7 {
             right: 6px;
         }
     }
+    /* Footer BTW styling — append near the existing .footer rule (or at end of file) */
+    .footer .btw {
+        color: #6c757d; /* matches Bootstrap .text-muted */
+        font-size: 0.9rem; /* same scale as footer */
+        font-family: inherit; /* use footer's Montserrat */
+        font-weight: 400;
+        margin-top: 0.25rem;
+        letter-spacing: 0.01em;
+    }
